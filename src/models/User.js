@@ -51,10 +51,14 @@ const userSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
 userSchema.pre('save', function(next) {
     if (this.phonenumber) {
         this.phonenumber = this.phonenumber.toString();
     }
     next();
 });
+
+
+
 export const User = mongoose.model('User',userSchema)
