@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken";
 import twilio from "twilio";
-import {User} from '../models/User.js'
+import {User} from '../models/User.js';
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const client = twilio(
   process.env.TWILIO_ACCOUNT_SID,
@@ -26,7 +29,7 @@ const generateTokens = (userId) => {
 
 // -------------------- Farmer Register --------------------
 export const registerFarmer = async (req, res) => {
-  const { name, phonenumber } = req.body;
+  const { name, phonenumber , location , language } = req.body;
   try {
     if (!name || !phonenumber) {
       return res.status(400).json({ success: false, message: "Name and phone number required" });
@@ -37,7 +40,7 @@ export const registerFarmer = async (req, res) => {
       return res.status(400).json({ success: false, message: "User already exists" });
     }
 
-    const user = new User({ name, phonenumber });
+    const user = new User({ name, phonenumber , location , language});
     await user.save();
 
     // Generate tokens after registration
@@ -47,8 +50,8 @@ export const registerFarmer = async (req, res) => {
       success: true,
       message: "Farmer registered successfully",
       user,
-      accessToken,
-      refreshToken
+      AcessToken : accessToken,
+      RefreshToken : refreshToken
     });
   } catch (error) {
     console.error("Error in registerFarmer:", error);
@@ -155,7 +158,7 @@ export const refreshAccessToken = async (req, res) => {
     return res.status(200).json({
       success: true,
       accessToken,
-      refreshToken: newRefreshToken
+      refreshToken: newRefreshToken 
     });
   } catch (error) {
     return res.status(403).json({ success: false, message: "Invalid refresh token" });
@@ -193,7 +196,6 @@ export const sendTestSMS = async (req, res) => {
   }
 };
 
-
 // -------------------- Logout Farmer --------------------
 export const farmerLogout = async (req, res) => {
   try {
@@ -220,3 +222,4 @@ export const farmerLogout = async (req, res) => {
     });
   }
 };
+

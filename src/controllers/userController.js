@@ -1,4 +1,5 @@
 import { User } from "../models/User.js";
+import { Farm } from "../models/Farm.js";
 import { validationResult } from "express-validator";
 
 // -------------------- Get Profile --------------------

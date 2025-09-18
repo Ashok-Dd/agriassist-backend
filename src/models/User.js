@@ -32,16 +32,16 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-      farmProfiles: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Farm'
-  }],
-  preferences: {
-    notifications: {
-      disease: { type: Boolean, default: true },
-      fertilizer: { type: Boolean, default: true },
-      irrigation: { type: Boolean, default: true },
-      market: { type: Boolean, default: true }
+    farmProfiles: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Farm'
+    }],
+    preferences: {
+      notifications: {
+        disease: { type: Boolean, default: true },
+        fertilizer: { type: Boolean, default: true },
+        irrigation: { type: Boolean, default: true },
+        market: { type: Boolean, default: true }
     },
     units: {
       area: { type: String, enum: ['acre', 'hectare'], default: 'acre' },
@@ -51,6 +51,7 @@ const userSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
 
 userSchema.pre('save', function(next) {
     if (this.phonenumber) {

@@ -1,11 +1,4 @@
-import { 
-  registerFarmer, 
-  sendOtp, 
-  loginFarmer, 
-  refreshAccessToken, 
-  sendTestSMS, 
-  checkTwilioConfig 
-} from "../controllers/authController.js";
+import {registerFarmer , sendOtp , loginFarmer , refreshAccessToken , sendTestSMS , checkTwilioConfig} from "../controllers/authController.js";
 
 import { Router } from "express";
 import { verifyRefreshToken } from "../middleware/authMiddleware.js";
