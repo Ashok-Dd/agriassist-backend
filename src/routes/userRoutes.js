@@ -115,14 +115,15 @@ userRouter.put('/preferences',
 
 userRouter.get('/farms', verifyToken, getFarms);
 
-
 userRouter.delete('/account',
    [
-  verifyToken,
-  body('confirmation')
-    .equals('DELETE_MY_ACCOUNT')
-    .withMessage('Account deletion requires confirmation: "DELETE_MY_ACCOUNT"'),
-  validateRequest
+    verifyToken,
+    body('confirmation')
+      .equals('DELETE_MY_ACCOUNT')
+      .withMessage('Account deletion requires confirmation: "DELETE_MY_ACCOUNT"'),
+    validateRequest
 ], deleteAccount);
+
+
 
 export default userRouter;
