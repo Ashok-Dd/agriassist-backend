@@ -79,7 +79,7 @@ export const sendOtp = async (req, res) => {
         success: false,
         message: "User not found. Please register first."
       });
-    }
+    } 
 
     const formattedPhone = `+91${phoneStr}`;
     const verification = await client.verify.v2.services(process.env.TWILIO_SERVICE_SID)
@@ -115,7 +115,6 @@ export const loginFarmer = async (req, res) => {
         to: formattedPhone,
         code
       });
-
     if (verificationCheck.status !== "approved") {
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }

@@ -23,7 +23,7 @@ app.use('/api/user' , userRouter) ;
 
 
 server.listen(9000 , () => {
-    console.log("server is running at 9005")
+    console.log("server is running at 9000")
 });
 
 mongoose.connect('mongodb://localhost:27017/Farmer_DB')
