@@ -29,21 +29,11 @@ const farmSchema = new mongoose.Schema({
     phosphorus: Number,
     potassium: Number,
     organicCarbon: Number,
-    micronutrients: {
-      zinc: Number,
-      iron: Number,
-      manganese: Number,
-      copper: Number,
-      boron: Number
-    },
-    reportUrl: String,
-    labName: String
   },
   waterSource: {
     type: { type: String, enum: ['Borewell', 'Canal', 'River', 'Pond', 'Rainwater'] },
     quality: { type: String, enum: ['Good', 'Average', 'Poor'] },
     availability: { type: String, enum: ['Abundant', 'Moderate', 'Scarce'] },
-    reportUrl: String
   },
   activeCrops: [{
     type: mongoose.Schema.Types.ObjectId,

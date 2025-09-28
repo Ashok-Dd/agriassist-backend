@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import cropCycleRoutes from "./routes/cropCycleRoutes.js";
+import farmRouter from "./routes/farmRoutes.js";
+import voiceRouter from "./routes/voiceRoutes.js";
 
 
 dotenv.config();
@@ -20,7 +23,9 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
 app.use('/api/user' , userRouter) ;
-
+app.use('/api/farm',farmRouter) ; 
+app.use('/api/chat' , voiceRouter) ;
+app.use('/api/crop-cycle',cropCycleRoutes) ;
 
 server.listen(9000 , () => {
     console.log("Server is running at 9000")
