@@ -15,13 +15,7 @@ const farmSchema = new mongoose.Schema({
     value: { type: Number, required: true },
     unit: { type: String, enum: ['acre', 'hectare'], default: 'acre' }
   },
-  location: {
-    coordinates: {
-      latitude: { type: Number, required: true },
-      longitude: { type: Number, required: true }
-    },
-    address: String
-  },
+  location:  String,
   soilReport: {
     testDate: Date,
     ph: Number,

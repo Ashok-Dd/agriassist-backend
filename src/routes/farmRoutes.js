@@ -6,7 +6,7 @@ import { verifyToken } from "../middleware/authMiddleware.js";
 const farmRouter =  Router() ;
 
 farmRouter.post('/register', farmRegister);
-farmRouter.get('/get/:farmId', getFarms)
+farmRouter.get('/get/:farmerId', getFarms)
 farmRouter.put("/update/:farmId", updateFarm);
 farmRouter.delete("/delete/:farmId", deleteFarm)
 

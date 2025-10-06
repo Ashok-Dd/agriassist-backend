@@ -4,6 +4,7 @@ import { Farm } from "../models/Farm.js";
 export const farmRegister = async (req, res) => {
   try {
     const {farmer, farmName, totalArea, location, soilReport, waterSource } = req.body;
+    console.log(farmer, farmName, totalArea, location, soilReport, waterSource);
 
     if (!farmName || !totalArea || !location) {
       return res.status(400).json({success: false,message: "Farm name, total area, and location are required!", });
@@ -11,6 +12,7 @@ export const farmRegister = async (req, res) => {
     const newFarm = new Farm({farmer,farmName,totalArea,location,soilReport,waterSource });
 
     await newFarm.save();
+    
     return res.status(201).json({success: true, message: "Farm added successfully!", data: newFarm});
   } catch (error) {
     console.error("Add Farm Error:", error);
@@ -20,7 +22,7 @@ export const farmRegister = async (req, res) => {
 
 export const getFarms = async (req, res) => {
   try {
-    const farmerId = req.user.id || req.user._id;
+    const { farmerId } = req.params
     const farms = await Farm.find({ farmer: farmerId });
    
 
